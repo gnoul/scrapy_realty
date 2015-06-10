@@ -3,6 +3,7 @@ from scrapy.selector import Selector
 from realty.items import RealtyItem
 from urlparse import urlparse, urljoin
 
+
 class RealtySpider(Spider):
     name = "realty"
     allowed_domains = ["irk.etagi.com"]
@@ -15,17 +16,12 @@ class RealtySpider(Spider):
         """
         """
         sel = Selector(response)
-        # sites = sel.xpath('//ul[@class="directory-url"]/li')
         sites = sel.xpath("//div[@class='tabs-container']//*//article//div[@class='description']")
         domain = '{uri.scheme}://{uri.netloc}'.format(uri=urlparse(response.url))
         rub = u'\u0440\u0443\u0431.'
         its = []
         for site in sites:
             item = RealtyItem()
-            # item['name'] = site.xpath('a/text()').extract()
-            # item['url'] = site.xpath('a/@href').extract()
-            # item['description'] = site.xpath('text()').re('-\s[^\n]*\\r')
-            # item['price']
             price = site.xpath(".//section[@class='d-1']//p[@class='price']//span/text()").extract()[0]
             price = price.replace(rub, '').replace(u' ', '')
             item['price'] = price

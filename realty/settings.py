@@ -13,9 +13,8 @@ BOT_NAME = 'realty'
 SPIDER_MODULES = ['realty.spiders']
 NEWSPIDER_MODULE = 'realty.spiders'
 
-
 DEFAULT_ITEM_CLASS = 'realty.items.RealtyItem'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'realty (+http://www.yourdomain.com)'
+# USER_AGENT = 'realty (+http://www.yourdomain.com)'
