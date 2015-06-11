@@ -11,3 +11,4 @@ class RealtyItem(Item):
     floor = Field()
     space = Field()
     kitchen = Field()
+    district = Field()
